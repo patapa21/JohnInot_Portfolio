@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Patrick Inot - QA Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .contact-info {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-info a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        
+        .contact-info a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        nav {
+            background: #f7fafc;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: #4a5568;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        
+        nav a:hover {
+            color: #667eea;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        section {
+            margin-bottom: 50px;
+        }
+        
+        h2 {
+            color: #2d3748;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        h3 {
+            color: #4a5568;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+        
+        h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin: 15px 0 10px 0;
+        }
+        
+        .highlight-box {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .skill-card {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .skill-card h4 {
+            margin-top: 0;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .skill-card li {
+            padding: 5px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .skill-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .project-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: 0.3s;
+        }
+        
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 4px 12px rgba(102,126,234,0.1);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin: 5px 5px 5px 0;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        ul li {
+            margin: 8px 0;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        
+        .cta-section h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            header {
+                padding: 30px 20px;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            nav {
+                padding: 15px 20px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>John Patrick Inot</h1>
+            <p>Quality Assurance Engineer | Software Tester</p>
+            <p style="font-size: 0.95em; margin-top: 10px;">B.S. Information Technology - Web & Game Development</p>
+            <div class="contact-info">
+                <a href="mailto:inotpatrick@gmail.com">📧 Email</a>
+                <a href="https://www.linkedin.com/in/johnpatrickinot" target="_blank">💼 LinkedIn</a>
+                <a href="tel:+639174189960">📱 +63 917 418 9960</a>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="content">
+            <section id="about">
+                <h2>About Me</h2>
+                <div class="highlight-box">
+                    <p><strong>Current Role:</strong> Custom Software Engineer at Accenture (2022 - Present)</p>
+                    <p><strong>Career Focus:</strong> Quality Assurance Engineering for remote/international opportunities</p>
+                    <p style="margin-top: 15px;">As a software engineer at Accenture, I've been actively involved in testing and quality assurance throughout my career. My experience as an Integration Project Tester, combined with my development background, has shown me that QA is where I can make the most impact. I understand both sides—how software is built and how it should be tested—which makes me effective at ensuring quality before products reach users.</p>
+                </div>
+            </section>
+            
+            <section id="experience">
+                <h2>Professional Experience</h2>
+                
+                <h3>Accenture | Custom Software Engineer (2022 - Present)</h3>
+                
+                <div class="project-card">
+                    <h4>Integration Project Tester</h4>
+                    <span class="badge">SOAPUI</span>
+                    <span class="badge">Postman</span>
+                    <span class="badge">API Testing</span>
+                    <ul>
+                        <li>Created and executed comprehensive test cases for web service integrations</li>
+                        <li>Formulated XML requests and validated responses</li>
+                        <li>Documented test results to uphold software reliability</li>
+                        <li>Ensured quality standards across integration projects</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Data Integrity Fix Projects</h4>
+                    <span class="badge">Quality Leadership</span>
+                    <span class="badge">Testing & Validation</span>
+                    <ul>
+                        <li>Led critical website data fix correcting reversed line displays</li>
+                        <li>Tested and validated solution across all dealer platforms</li>
+                        <li>Ensured accuracy and consistency of information post-deployment</li>
+                        <li>Prevented customer-facing data quality issues</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Excel Automation & Tier 2 Support</h4>
+                    <span class="badge">Automation</span>
+                    <span class="badge">Training</span>
+                    <span class="badge">Problem Solving</span>
+                    <ul>
+                        <li>Developed Excel automation tool for transaction analytics</li>
+                        <li>Trained new hires on Tier 2 support processes</li>
+                        <li>Focused on continuous monitoring and issue resolution</li>
+                        <li>Maintained process improvements and quality standards</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="skills">
+                <h2>Technical Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h4>QA & Testing</h4>
+                        <ul>
+                            <li>SOAPUI & Postman</li>
+                            <li>API Testing</li>
+                            <li>Test Case Design</li>
+                            <li>XML Validation</li>
+                            <li>Integration Testing</li>
+                            <li>Manual Testing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h4>Development</h4>
+                        <ul>
+                            <li>Java & C#</li>
+                            <li>Visual Studio Code</li>
+                            <li>Unity Game Engine</li>
+                            <li>Android Studio</li>
+                            <li>Version Control</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h4>Tools & Platforms</h4>
+                        <ul>
+                            <li>ServiceNow</li>
+                            <li>Box-IBM</li>
+                            <li>HTTP Admin</li>
+                            <li>Microsoft Office Suite</li>
+                            <li>Documentation Tools</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-card">
+                        <h4>Soft Skills</h4>
+                        <ul>
+                            <li>Communication</li>
+                            <li>Team Collaboration</li>
+                            <li>Problem Solving</li>
+                            <li>Training & Mentoring</li>
+                            <li>Remote Work Ready</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="projects">
+                <h2>Project Portfolio</h2>
+                
+                <div class="project-card">
+                    <h4>2D Platformer Game (Unity)</h4>
+                    <span class="badge">Game Development</span>
+                    <span class="badge">C#</span>
+                    <span class="badge">Testing</span>
+                    <p><strong>Academic Project | Bulacan State University</strong></p>
+                    <p style="margin-top: 10px;"><strong>QA Perspective:</strong></p>
+                    <ul>
+                        <li>Tested game mechanics including collision detection and player movement</li>
+                        <li>Identified and fixed bugs in gameplay logic</li>
+                        <li>Performed edge case testing (boundary conditions, failure scenarios)</li>
+                        <li>Conducted user acceptance testing with peers</li>
+                        <li>Ensured game stability across different play sessions</li>
+                    </ul>
+                </div>
+                
+                <div class="project-card">
+                    <h4>Weather Application (Android Studio)</h4>
+                    <span class="badge">Mobile Development</span>
+                    <span class="badge">API Integration</span>
+                    <p><strong>Academic Project | Mobile Development Course</strong></p>
+                    <p style="margin-top: 10px;"><strong>Testing Elements:</strong></p>
+                    <ul>
+                        <li>API integration testing for weather data retrieval</li>
+                        <li>UI/UX testing across different screen sizes</li>
+                        <li>Data validation and error handling</li>
+                        <li>Performance testing for app responsiveness</li>
+                        <li>Compatibility testing on Android devices</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <div class="cta-section">
+                <h3>Why Hire Me for QA?</h3>
+                <p style="margin-bottom: 20px;">✓ 2+ years professional testing experience with SOAPUI & Postman<br>
+                ✓ Developer perspective - I understand how code works and where bugs hide<br>
+                ✓ Proven track record in integration testing and quality assurance<br>
+                ✓ Remote work ready with strong communication skills</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+            
+            <section id="contact">
+                <h2>Let's Connect</h2>
+                <div class="highlight-box">
+                    <p><strong>Email:</strong> <a href="mailto:inotpatrick@gmail.com">inotpatrick@gmail.com</a></p>
+                    <p><strong>Phone:</strong> +63 (917) 418 9960</p>
+                    <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/johnpatrickinot" target="_blank">linkedin.com/in/johnpatrickinot</a></p>
+                    <p style="margin-top: 15px;">I'm actively seeking QA Engineer and Video Game Tester roles with remote/international companies. I'm available for interviews and ready to start immediately.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+</html>
