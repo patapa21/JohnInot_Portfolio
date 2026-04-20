@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>John Patrick Inot — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black: #0d0d0d; --dark: #1a1a1a; --mid: #5a5a5a;
+      --light: #aaa; --border: #e4e4e4; --off-white: #f8f8f6; --white: #fff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--black); font-size: 15px; line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 40px;
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--black); text-decoration: none; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--black); }
+
+    /* ── SHARED SECTION ── */
+    section {
+      padding: 64px 24px;
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .section-eyebrow {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--light);
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+      line-height: 1.15; margin-bottom: 32px;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      padding: 130px 24px 72px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .hero-tag {
+      display: inline-block; font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--light);
+      border: 1px solid var(--border); padding: 5px 14px; border-radius: 20px; margin-bottom: 22px;
+    }
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1.04; letter-spacing: -0.02em; margin-bottom: 18px; text-align: center;
+    }
+    .hero-name em { font-style: italic; color: var(--mid); }
+    .hero-desc {
+      font-size: 1rem; font-weight: 300; color: var(--mid);
+      max-width: 440px; line-height: 1.75; margin-bottom: 32px; text-align: center;
+    }
+    .btn-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--black); color: var(--white);
+      padding: 11px 24px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .hero-cta:hover { opacity: 0.8; transform: translateY(-2px); }
+    .hero-cta-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid var(--border); color: var(--mid);
+      padding: 11px 24px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; transition: border-color 0.2s, color 0.2s;
+    }
+    .hero-cta-ghost:hover { border-color: var(--black); color: var(--black); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--off-white); }
+    .about-bio {
+      max-width: 520px; margin: 0 auto 32px;
+      font-size: 0.97rem; color: var(--mid); line-height: 1.8;
+    }
+    .about-bio p + p { margin-top: 12px; }
+    .about-stats {
+      display: flex; justify-content: center; flex-wrap: wrap; gap: 12px;
+      max-width: 600px; margin: 0 auto;
+    }
+    .stat-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 18px 24px; min-width: 120px;
+      flex: 1;
+    }
+    .stat-num { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--black); line-height: 1; }
+    .stat-label { font-size: 0.73rem; color: var(--light); margin-top: 5px; }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--white); }
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px; max-width: 900px; margin: 0 auto;
+    }
+    .project-card {
+      border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      background: var(--white); transition: box-shadow 0.25s, transform 0.25s;
+      display: flex; flex-direction: column; text-align: left;
+    }
+    .project-card:hover { box-shadow: 0 10px 32px rgba(0,0,0,0.08); transform: translateY(-4px); }
+    .project-preview {
+      height: 110px; background: var(--off-white);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .project-preview-icon { font-size: 2rem; }
+    .project-preview-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); }
+    .project-body { padding: 18px; flex: 1; display: flex; flex-direction: column; }
+    .project-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); margin-bottom: 6px; }
+    .project-name { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 8px; }
+    .project-desc { font-size: 0.87rem; color: var(--mid); line-height: 1.65; margin-bottom: 16px; flex: 1; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 0.8rem; font-weight: 600; color: var(--black);
+      text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px;
+      transition: opacity 0.2s;
+    }
+    .project-link:hover { opacity: 0.45; }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--off-white); }
+    .skills-wrapper { max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+    .skill-group { }
+    .skill-group-title {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--light); margin-bottom: 10px;
+    }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .chip {
+      font-size: 0.83rem; color: var(--dark);
+      border: 1px solid var(--border); background: var(--white);
+      padding: 6px 14px; border-radius: 20px;
+      transition: background 0.18s, color 0.18s, border-color 0.18s; cursor: default;
+    }
+    .chip:hover { background: var(--black); color: var(--white); border-color: var(--black); }
+
+    /* ── EXPERIENCE ── */
+    #experience { background: var(--white); }
+    .exp-wrapper { max-width: 640px; margin: 0 auto; }
+    .exp-block { margin-bottom: 44px; }
+    .exp-block:last-child { margin-bottom: 0; }
+    .exp-meta { margin-bottom: 18px; }
+    .exp-company { font-family: 'DM Serif Display', serif; font-size: 1.6rem; margin-bottom: 4px; }
+    .exp-role-period {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      font-size: 0.85rem; color: var(--mid);
+    }
+    .exp-role-period .dot { color: var(--border); }
+    .exp-period { color: var(--light); }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+    .exp-bullets li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.9rem; color: var(--mid); line-height: 1.65; text-align: left;
+    }
+    .exp-bullets li::before {
+      content: '—'; color: var(--border); flex-shrink: 0; margin-top: 2px;
+    }
+    .exp-divider { width: 40px; height: 1px; background: var(--border); margin: 28px auto; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--black); color: var(--white); border-bottom: none; }
+    #contact .section-eyebrow { color: #444; }
+    #contact .section-title { color: var(--white); margin-bottom: 12px; }
+    .contact-sub { font-size: 0.95rem; color: #666; max-width: 380px; margin: 0 auto 28px; line-height: 1.7; }
+    .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 11px 22px; border-radius: 6px; font-size: 0.85rem; font-weight: 500;
+      text-decoration: none; transition: opacity 0.2s, transform 0.2s;
+    }
+    .contact-btn:hover { opacity: 0.75; transform: translateY(-2px); }
+    .contact-btn-primary { background: var(--white); color: var(--black); }
+    .contact-btn-outline { border: 1px solid #2a2a2a; color: #666; }
+    .contact-btn-outline:hover { border-color: #555; color: var(--white); opacity: 1; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black); border-top: 1px solid #1a1a1a;
+      padding: 16px 40px; display: flex; justify-content: space-between; align-items: center;
+    }
+    footer p { font-size: 0.75rem; color: #333; }
+
+    /* ── ANIMATIONS ── */
+    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 12px 20px; }
+      .nav-links { gap: 16px; }
+      section { padding: 52px 20px; }
+      #hero { padding: 100px 20px 60px; }
+      .about-stats { flex-direction: column; align-items: center; }
+      .stat-box { width: 100%; max-width: 300px; }
+      footer { flex-direction: column; gap: 6px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">JPI</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <span class="hero-tag">Software Engineer · Manila, PH</span>
+    <h1 class="hero-name">John Patrick<br><em>Inot</em></h1>
+    <p class="hero-desc">B.S. IT graduate specialized in web and application development. Building scalable solutions at Accenture since 2022.</p>
+    <div class="btn-row">
+      <a href="#projects" class="hero-cta">View Projects ↓</a>
+      <a href="#contact" class="hero-cta-ghost">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <span class="section-eyebrow">About</span>
+    <h2 class="section-title">Developer &amp; Problem Solver</h2>
+    <div class="about-bio fade-up">
+      <p>I'm a Custom Software Engineer at Accenture, designing and building software components across systems and applications — using modern frameworks to deliver scalable, business-ready solutions.</p>
+      <p>Outside work, I build personal projects ranging from budget trackers to food web apps that sharpen my skills and solve everyday problems.</p>
+    </div>
+    <div class="about-stats fade-up">
+      <div class="stat-box"><div class="stat-num">3+</div><div class="stat-label">Years at Accenture</div></div>
+      <div class="stat-box"><div class="stat-num">5+</div><div class="stat-label">Projects Delivered</div></div>
+      <div class="stat-box"><div class="stat-num">B.S.</div><div class="stat-label">Information Technology</div></div>
+      <div class="stat-box"><div class="stat-num">T2</div><div class="stat-label">Support Trainer</div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <span class="section-eyebrow">Work</span>
+    <h2 class="section-title">Personal Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card fade-up">
+        <div class="project-preview">
+          <div class="project-preview-icon">💰</div>
+          <div class="project-preview-label">Budget Tracker</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tag">Web App</div>
+          <h3 class="project-name">Tet's Budget</h3>
+          <p class="project-desc">A personal finance tracker to manage budgets, monitor expenses, and hit spending goals.</p>
+          <a href="https://tetsbudget.web.app" target="_blank" class="project-link">Visit Live App →</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-preview">
+          <div class="project-preview-icon">💻</div>
+          <div class="project-preview-label">Web App</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tag">Web App</div>
+          <h3 class="project-name">Patap C</h3>
+          <p class="project-desc">A GitHub Pages–hosted web project focused on clean structure, interactivity, and usability.</p>
+          <a href="https://patapa21.github.io/patapc/" target="_blank" class="project-link">Visit Live App →</a>
+        </div>
+      </div>
+
+      <div class="project-card fade-up">
+        <div class="project-preview">
+          <div class="project-preview-icon">🧊</div>
+          <div class="project-preview-label">Food &amp; Drinks</div>
+        </div>
+        <div class="project-body">
+          <div class="project-tag">Web App</div>
+          <h3 class="project-name">On Iced Cravings</h3>
+          <p class="project-desc">A food and beverage web app with a clean menu and order-browsing experience for iced drinks.</p>
+          <a href="https://patapa21.github.io/OnIcedCravingsWebApp/onicedcravings/on-iced-cravings-fixed.html" target="_blank" class="project-link">Visit Live App →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <span class="section-eyebrow">Capabilities</span>
+    <h2 class="section-title">Skills &amp; Tools</h2>
+    <div class="skills-wrapper fade-up">
+      <div class="skill-group">
+        <div class="skill-group-title">Technical Tools</div>
+        <div class="skill-chips">
+          <span class="chip">ServiceNow</span><span class="chip">HTTP Admin</span><span class="chip">SOAPUI</span><span class="chip">Postman</span><span class="chip">Selenium</span><span class="chip">Box-IBM</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Languages &amp; IDEs</div>
+        <div class="skill-chips">
+          <span class="chip">Java</span><span class="chip">C#</span><span class="chip">HTML / CSS</span><span class="chip">JavaScript</span><span class="chip">VS Code</span><span class="chip">Unity</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Testing &amp; QA</div>
+        <div class="skill-chips">
+          <span class="chip">API Testing</span><span class="chip">Test Scenarios</span><span class="chip">XML Requests</span><span class="chip">UI Automation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Soft Skills</div>
+        <div class="skill-chips">
+          <span class="chip">Client Communication</span><span class="chip">Team Collaboration</span><span class="chip">Problem Solving</span><span class="chip">Documentation</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <span class="section-eyebrow">Experience</span>
+    <h2 class="section-title">Where I've Worked</h2>
+    <div class="exp-wrapper">
+
+      <div class="exp-block fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">Accenture</div>
+          <div class="exp-role-period">
+            <span>Custom Software Engineer</span>
+            <span class="dot">·</span>
+            <span class="exp-period">2022 — Present</span>
+          </div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Led a critical data integrity fix, correcting reversed displays and eliminating encoding errors across all dealer platforms.</li>
+          <li>Built an Excel automation tool that streamlined transaction analytics, cutting down manual reporting effort.</li>
+          <li>Trained new hires on Tier 2 support — project monitoring, issue resolution, and process improvements.</li>
+          <li>Created and executed comprehensive test cases using SOAPUI and Postman for integration validation.</li>
+          <li>Automated web service deployments on HTTPAdmin using Selenium, improving reliability and reducing manual troubleshooting.</li>
+        </ul>
+      </div>
+
+      <div class="exp-divider"></div>
+
+      <div class="exp-block fade-up">
+        <div class="exp-meta">
+          <div class="exp-company">Bulacan State University</div>
+          <div class="exp-role-period">
+            <span>B.S. Information Technology</span>
+            <span class="dot">·</span>
+            <span class="exp-period">2018 — 2022</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <span class="section-eyebrow">Contact</span>
+    <h2 class="section-title">Let's Work Together</h2>
+    <p class="contact-sub">Have a project in mind or just want to connect? I'm open to new opportunities.</p>
+    <div class="contact-links">
+      <a href="mailto:inotpatrick@gmail.com" class="contact-btn contact-btn-primary">✉ inotpatrick@gmail.com</a>
+      <a href="https://www.linkedin.com/in/johnpatrickinot" target="_blank" class="contact-btn contact-btn-outline">in LinkedIn</a>
+      <a href="tel:+639174189960" class="contact-btn contact-btn-outline">☏ +63 917 418 9960</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 John Patrick Inot</p>
+    <p>Built with HTML · CSS · JS</p>
+  </footer>
+
+  <script>
+    const obs = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }), { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+</html>
